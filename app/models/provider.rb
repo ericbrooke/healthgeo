@@ -2,5 +2,6 @@
 class Provider < ActiveRecord::Base
   has_many :contacts
   has_many :locations
-  has_many :abilities
+  has_many :capabilities
+  has_many :abilities, through: :capabilities
 end

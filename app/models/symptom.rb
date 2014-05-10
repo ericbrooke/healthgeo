@@ -1,4 +1,4 @@
 class Symptom < ActiveRecord::Base
-  has_many :ability
-  # has_one :capacity, through: :ability
+  has_many :treatments
+  has_many :abilities, through: :treatments
 end

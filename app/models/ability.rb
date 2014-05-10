@@ -1,5 +1,7 @@
 class Ability < ActiveRecord::Base
-  belongs_to :provider
+  has_many :capabilities
+  has_many :providers, through: :capabilities
   belongs_to :capacity
-  has_and_belongs_to_many :symptoms
+  has_many :treatments
+  has_many  :symptoms, through: :treatments
 end
