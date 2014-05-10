@@ -1,3 +1,3 @@
 class Contact < ActiveRecord::Base
-  belongs_to :provider
+  has_one :provider
 end
