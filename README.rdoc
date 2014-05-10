@@ -1,3 +1,0 @@
-Health Geo - App to find health services
-
-Build an open source framework/app and make health service discovery easy and put it on a map.  Be able to tag services with symptoms such as depression or pregnancy ;-) This would allow others to be able to add their own flavour to it regardless of end game.
