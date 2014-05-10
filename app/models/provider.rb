@@ -1,6 +1,6 @@
 # The organizations, doctor, nurses, or other service provider
 class Provider < ActiveRecord::Base
-  attr_accessible :name, :type
-
-  has_many :contacts, :locations, :abilities
+  has_many :contacts
+  has_many :locations
+  has_many :abilities
 end

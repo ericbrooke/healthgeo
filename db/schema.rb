@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20140510184509) do
   end
 
   create_table "providers", force: true do |t|
-    t.string   "name"
-    t.string   "type"
+    t.string   "name",       null: false
+    t.string   "kind",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
