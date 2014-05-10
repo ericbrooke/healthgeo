@@ -1,4 +1,4 @@
 class Capacity < ActiveRecord::Base
-  belongs_to :ability
-  belongs_to :symptoms, through: :ability
+  has_one :ability
+  has_many :symptoms, through: :abliity
 end

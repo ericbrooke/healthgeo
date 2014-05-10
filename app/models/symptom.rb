@@ -1,3 +1,4 @@
 class Symptom < ActiveRecord::Base
-  belongs_to :capacity, through: :ability
+  has_many :ability
+  # has_one :capacity, through: :ability
 end

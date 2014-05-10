@@ -3,6 +3,7 @@ class CreateCapacities < ActiveRecord::Migration
     create_table :capacities do |t|
       t.integer :professional_count
       t.integer :patient_count
+      t.references :ability
 
       t.timestamps
     end
