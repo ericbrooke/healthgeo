@@ -7,7 +7,7 @@ feature 'Creating Providers' do
     click_link 'New Provider'
 
     fill_in 'Name', with: 'ABC Health'
-    fill_in 'Kind', with 'Health Clinic'
+    fill_in 'Kind', with: 'Health Clinic'
     click_button 'Create Provider'
 
     expect(page).to have_content('Provider has been created.')
