@@ -57,7 +57,7 @@ before_action :set_provider, only: [:show,:edit, :update,:destroy]
 private
 
   def provider_params
-    params.require(:provider).permit(:name, :type)
+    params.require(:provider).permit(:name, :kind)
   end
 
   def set_provider
