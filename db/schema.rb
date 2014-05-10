@@ -11,10 +11,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140510184509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "abilities", force: true do |t|
+    t.string   "name"
+    t.boolean  "equipment"
+    t.integer  "symptom_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "capacities", force: true do |t|
+    t.integer  "professional_count"
+    t.integer  "patient_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.integer  "phone"
+    t.string   "email"
+    t.string   "website"
+    t.integer  "provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "providers", force: true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "symptoms", force: true do |t|
+    t.string   "name",                      null: false
+    t.integer  "request_count", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
-######

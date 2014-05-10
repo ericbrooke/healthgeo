@@ -4,7 +4,7 @@ class CreateContacts < ActiveRecord::Migration
       t.integer :phone
       t.string :email
       t.string :website
-      t.reference :provider
+      t.references :provider
 
       t.timestamps
     end

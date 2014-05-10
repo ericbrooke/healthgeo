@@ -2,8 +2,8 @@ class CreateAbilities < ActiveRecord::Migration
   def change
     create_table :abilities do |t|
       t.string :name
-      t.bool :equipment
-      t.reference :symptom
+      t.boolean :equipment
+      t.references :symptom
 
       t.timestamps
     end
