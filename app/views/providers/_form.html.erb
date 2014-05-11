@@ -1,4 +1,4 @@
-<%= form_for @provider do |f| %>
+<%= simple_form_for @provider do |f| %>
 
   <% if @provider.errors.any? %>
    <div id="error_explanation">
@@ -12,14 +12,12 @@
    </div>
   <% end %>
 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :kind %><br>
-    <%= f.text_area :kind %>
-  </p>
+  <p><%= f.text_field :name, placeholder: 'Name' %></p>
+  <p><%= f.text_field :kind, placeholder: 'Kind' %></p>
 
-  <%= f.submit %>
+  <%= f.simple_fields_for :locations,  f.object.locations.build do |loc| %>
+    <%= render 'location_fields', f: loc %>
+  <% end %>
+
+  <p><%= f.submit %></p>
 <% end %>

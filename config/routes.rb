@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'providers#index'
 
-   resources :providers
+   resources :providers do
+     member do
+       get 'locations'
+     end
+     resources :locations
+   end
    resources :locations
    resources :symptoms
 

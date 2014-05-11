@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem 'geocoder' # "complete Ruby geocoding solution" (rubygeocoder.com)
 gem 'annotate', '~> 2.6.3'
+gem 'simple_form'
 
 
 gem 'gmaps4rails'
@@ -44,6 +45,12 @@ gem 'underscore-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development do
+  gem 'byebug'
+  gem "better_errors"
+  gem 'binding_of_caller'
+end
 
 group :test, :development do
   gem 'rspec-rails'

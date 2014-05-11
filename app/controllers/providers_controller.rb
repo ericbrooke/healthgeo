@@ -21,11 +21,13 @@ before_action :set_provider, only: [:show,:edit, :update,:destroy]
 
   def new
       @provider = Provider.new
+      # byebug
+      @locations = @provider.locations.build
   end
 
   def create
     @provider = Provider.new(provider_params)
-
+byebug
     if @provider.save
       flash[:notice] = "Provider has been created."
       redirect_to providers_path
@@ -56,6 +58,11 @@ before_action :set_provider, only: [:show,:edit, :update,:destroy]
     redirect_to providers_path
   end
 
+  def locations
+    # @providers = Provider.all
+    @locations = @provider.locations
+  end
+
 private
 
   def provider_params
@@ -67,6 +74,10 @@ private
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The provider you were looking for could not be found."
       redirect_to providers_path
+  end
+
+  def provider_params
+    params.require(:provider).permit(:name, :kind, locations_attributes: [:address])
   end
 
 end
