@@ -1,0 +1,7 @@
+<h3>Providers (<%= @providers.count %>)</h3>
+
+  <% @providers.each do |provider| %>
+    <li><%= link_to provider.name, provider %></li>
+  <% end %>
+
+<%= link_to "New Provider", new_provider_path %>

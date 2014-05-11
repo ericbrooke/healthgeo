@@ -3,7 +3,7 @@ class ProvidersController < ApplicationController
 before_action :set_provider, only: [:show,:edit, :update,:destroy]
 
   def index
-    @providers = Providers.all
+    @providers = Provider.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @providers}
@@ -20,13 +20,15 @@ before_action :set_provider, only: [:show,:edit, :update,:destroy]
   end
 
   def new
-      @provider = Provider.new(provider_params)
+      @provider = Provider.new
   end
 
   def create
+    @provider = Provider.new(provider_params)
+
     if @provider.save
       flash[:notice] = "Provider has been created."
-      redirect_to @provider
+      redirect_to providers_path
     else
       flash[:alert] = "Provider has NOT been created."
       render "new"
@@ -51,7 +53,7 @@ before_action :set_provider, only: [:show,:edit, :update,:destroy]
     @provider.destroy
 
     flash[:notice] = "Provider has been destroyed."
-    redirect_to providers_path”
+    redirect_to providers_path
   end
 
 private
@@ -63,8 +65,7 @@ private
   def set_provider
     @provider = Provider.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      flash[:alert] = "The provider you were looking" +
-                    " for could not be found."
+      flash[:alert] = "The provider you were looking for could not be found."
       redirect_to providers_path
   end
 
