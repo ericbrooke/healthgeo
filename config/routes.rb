@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
    resources :providers
    resources :locations
+   resources :symptoms
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

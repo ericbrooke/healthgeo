@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <%= link_to "List of Locations", locations_path %>
+    <%= link_to "List of Providers", providers_path %>
+    <%= link_to "List of Symptoms", symptoms_path %>
+  </nav>
 
 <%= yield %>
 

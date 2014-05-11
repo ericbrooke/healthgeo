@@ -1,0 +1,9 @@
+<li><%= @symptom.name %></li>
+<li><%= @symptom.request_count %></li>
+
+<%= link_to "Edit symptom", edit_symptom_path(@symptom) %>
+
+<%= link_to "Delete symptom", @symptom, method: :delete,
+     data: { confirm: "Are you sure you want to delete this symptom?" } %>
+
+<%= link_to "List of symptoms", symptoms_path %>

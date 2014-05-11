@@ -1,0 +1,7 @@
+<h3>symptoms (<%= @symptoms.count %>)</h3>
+
+  <% @symptoms.each do |symptom| %>
+    <li><%= link_to symptom.name, symptom %></li>
+  <% end %>
+
+<%= link_to "New symptom", new_symptom_path %>
