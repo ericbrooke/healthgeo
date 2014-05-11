@@ -3,4 +3,18 @@ class Location < ActiveRecord::Base
   has_many :providers, through: :worksites
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  def find_by_radius(point1, point2, radius)
+    acc = []
+
+    for ea in self.all do
+      acc.push(ea) if in_circle?(point1, point2, radius)
+    end
+
+    return acc
+  end
+
+  def in_circle?(point1, point2, radius)
+    Geocoder::Calculations.distance_between(point1, point2) < radius
+  end
 end
