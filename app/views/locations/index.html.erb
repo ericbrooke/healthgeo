@@ -4,4 +4,23 @@
     <li><%= link_to location.address, location %></li>
   <% end %>
 
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    <% @locations.each do |loc| %>
+      { "lat": <%= loc.latitude %>,
+        "lng": <%= loc.longitude %>
+      }<%= ',' unless loc == @locations.last %>
+    <% end %>
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
+
 <%= link_to "New Location", new_location_path %>
