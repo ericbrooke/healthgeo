@@ -20,18 +20,19 @@
 <script type="text/javascript">
   $(document).ready(function () {
     handler = Gmaps.build('Google');
+    var lat_value =  <%= @location.latitude %>;
+    var long_value =  <%= @location.longitude %>;
+    var centerpoint = new google.maps.LatLng(lat_value, long_value);
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers([
-        <% @locations.each do |loc| %>
-          { "lat": <%= loc.latitude %>,
-            "lng": <%= loc.longitude %>
-          }<%= ',' unless loc == @locations.last %>
-        <% end %>
+          { "lat": lat_value,
+            "lng": long_value
+          }
       ]);
 
       handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
+      handler.getMap().setCenter(centerpoint);
+      handler.getMap().setZoom(15);
     });
   });
 </script>
-<% end %>

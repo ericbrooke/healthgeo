@@ -12,22 +12,3 @@
      data: { confirm: "Are you sure you want to delete this provider?" } %>
 
 <%= link_to "List of Providers", providers_path %>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers([
-        <% @provider.locations.each do |loc| %>
-          { "lat": <%= loc.latitude %>,
-            "lng": <%= loc.longitude %>
-          }<%= ',' unless loc == @provider.locations.last %>
-        <% end %>
-      ]);
-
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
-  });
-</script>
-<% end %>
