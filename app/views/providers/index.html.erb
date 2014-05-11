@@ -5,3 +5,27 @@
   <% end %>
 
 <%= link_to "New Provider", new_provider_path %>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers([
+        <% @providers.each do |p| %>
+          <% p.locations.each do |loc| %>
+            { "lat": <%= loc.latitude %>,
+              "lng": <%= loc.longitude %>
+            }<%= ',' unless (p == @providers.last && loc == p.locations.last) %>
+          <% end %>
+        <% end %>
+      ]);
+
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  });
+</script>

@@ -38,6 +38,7 @@ before_action :set_provider, only: [:show,:edit, :update,:destroy]
   end
 
   def edit
+    @provider.locations.build
   end
 
   def update
