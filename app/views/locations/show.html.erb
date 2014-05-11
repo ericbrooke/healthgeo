@@ -1,0 +1,10 @@
+<li><%= @location.address %></li>
+<li><%= @location.latitude %></li>
+<li><%= @location.longitude %></li>
+
+<%= link_to "Edit Location", edit_location_path(@location) %>
+
+<%= link_to "Delete Location", @location, method: :delete,
+     data: { confirm: "Are you sure you want to delete this location?" } %>
+
+<%= link_to "List of Locations", locations_path %>

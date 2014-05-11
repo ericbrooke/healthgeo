@@ -1,0 +1,7 @@
+<h3>Locations (<%= @locations.count %>)</h3>
+
+  <% @locations.each do |location| %>
+    <li><%= link_to location.address, location %></li>
+  <% end %>
+
+<%= link_to "New Location", new_location_path %>

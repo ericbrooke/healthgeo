@@ -6,6 +6,7 @@ Rails.application.routes.draw do
    root 'providers#index'
 
    resources :providers
+   resources :locations
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
