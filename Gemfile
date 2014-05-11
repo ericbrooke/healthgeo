@@ -29,6 +29,10 @@ gem 'spring',        group: :development
 gem 'geocoder' # "complete Ruby geocoding solution" (rubygeocoder.com)
 gem 'annotate', '~> 2.6.3'
 
+
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
