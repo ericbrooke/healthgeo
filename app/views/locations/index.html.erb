@@ -1,26 +1,31 @@
 <h3>Locations (<%= @locations.count %>)</h3>
 
-  <% @locations.each do |location| %>
-    <li><%= link_to location.address, location %></li>
-  <% end %>
+<% @locations.each do |location| %>
+  <li><%= link_to location.address, location %></li>
+<% end %>
+
+<%= link_to "New Location", new_location_path %>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-    <% @locations.each do |loc| %>
-      { "lat": <%= loc.latitude %>,
-        "lng": <%= loc.longitude %>
-      }<%= ',' unless loc == @locations.last %>
-    <% end %>
-  ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
-</script>
+<%# content_for :javascripts do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers([
+          <% @locations.each do |loc| %>
+            { "lat": <%= loc.latitude %>,
+              "lng": <%= loc.longitude %>
+            }<%= ',' unless loc == @locations.last %>
+          <% end %>
+        ]);
 
-<%= link_to "New Location", new_location_path %>
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    });
+  </script>
+<%# end %>

@@ -1,11 +1,16 @@
+<% content_for :javascripts do %>
+<script type="text/javascript">
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   markers = handler.addMarkers([
-    {
-      "lat": 0,
-      "lng": 0
-      "infowindow": "hello!"
-    }
+    <% @locations.each do |loc| %>
+      { "lat": <%= loc.latitude %>,
+        "lng": <%= loc.longitude %>
+      }<%= ',' unless loc == @locations.last %>
+    <% end %>
   ]);
   handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
 });
+</script>
+<% end %>
