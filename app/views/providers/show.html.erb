@@ -1,5 +1,10 @@
-<li><%= @provider.name %></li>
-<li><%= @provider.kind %></li>
+<li><strong>Name:</strong> <%= @provider.name %></li>
+<li><strong>Kind:</strong> <%= link_to "#{@provider.kind}", @provider.kind %></li>
+<li><strong>Location:</strong>
+  <% @provider.locations.each do |loc| %>
+    <%= link_to "#{loc.address}", loc.address %>
+  <% end %>
+</li>
 
 <%= link_to "Edit Provider", edit_provider_path(@provider) %>
 

@@ -21,13 +21,12 @@ before_action :set_provider, only: [:show,:edit, :update,:destroy]
 
   def new
       @provider = Provider.new
-      # byebug
-      @locations = @provider.locations.build
+      @provider.locations.build
   end
 
   def create
     @provider = Provider.new(provider_params)
-byebug
+
     if @provider.save
       flash[:notice] = "Provider has been created."
       redirect_to providers_path
@@ -77,7 +76,7 @@ private
   end
 
   def provider_params
-    params.require(:provider).permit(:name, :kind, locations_attributes: [:address])
+    params.require(:provider).permit(:name, :kind, locations_attributes: [:id, :address])
   end
 
 end
